@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Student Registration and Management</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <!-- Navigation Bar -->
+        <nav>
+            <ul>
+                <li>
+                    <a href="#" onclick="showSection('register')"
+                        >Register Student</a
+                    >
+                </li>
+                <li>
+                    <a href="#" onclick="showSection('viewStudents')"
+                        >View Students</a
+                    >
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Register -->
+        <div class="container" id="register" style="display: block">
+            <h2>Student Registration Form</h2>
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea
+                        id="address"
+                        name="address"
+                        rows="4"
+                        required
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="profilePicture">Profile Picture</label>
+                    <input
+                        type="file"
+                        id="profilePicture"
+                        name="profilePicture"
+                        accept="image/*"
+                        required
+                    />
+                </div>
+
+                <button type="submit">Register</button>
+            </form>
+
+            <div id="successMessage" style="display: none">
+                <p>Registration successful!</p>
+            </div>
+        </div>
+
+        <!-- View Students Section -->
+        <div class="container" id="viewStudents" style="display: none">
+            <h2>Student List</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody id="studentTableBody">
+                    <tr
+                        onclick="showStudentDetails('John Doe', '1234 Elm Street', '555-1234', 'johndoe@example.com')"
+                    >
+                        <td>John Doe</td>
+                        <td>1234 Elm Street</td>
+                        <td>555-1234</td>
+                        <td>johndoe@example.com</td>
+                    </tr>
+                    <tr
+                        onclick="showStudentDetails('Jane Smith', '5678 Oak Avenue', '555-5678', 'janesmith@example.com')"
+                    >
+                        <td>Jane Smith</td>
+                        <td>5678 Oak Avenue</td>
+                        <td>555-5678</td>
+                        <td>janesmith@example.com</td>
+                    </tr>
+                    <tr
+                        onclick="showStudentDetails('Bob Johnson', '9101 Pine Lane', '555-9101', 'bobjohnson@example.com')"
+                    >
+                        <td>Bob Johnson</td>
+                        <td>9101 Pine Lane</td>
+                        <td>555-9101</td>
+                        <td>bobjohnson@example.com</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Modal -->
+        <div id="studentModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2>Student Details</h2>
+                <div class="image-container">
+                    <img
+                        src="img/user.png"
+                        alt="img/user.png"
+                        class="round-image"
+                    />
+                </div>
+                <p><strong>Name:</strong> <span id="modalName"></span></p>
+                <p><strong>Address:</strong> <span id="modalAddress"></span></p>
+                <p><strong>Phone:</strong> <span id="modalPhone"></span></p>
+                <p><strong>Email:</strong> <span id="modalEmail"></span></p>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
