@@ -47,10 +47,48 @@ document
                 password,
                 profilePicture,
             });
-
+            addStudent();
             // Clear
             document.getElementById("registrationForm").reset();
         } else {
             alert("Please fill out all fields");
         }
     });
+
+function addStudent() {
+    const name = document.getElementById("name").value;
+    const address = document.getElementById("address").value;
+    const phone = document.getElementById("phone").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const profilePicture = document.getElementById("profilePicture").files[0];
+
+    const formData = new FormData();
+    formData.append(
+        "student",
+        new Blob(
+            [
+                JSON.stringify({
+                    name: name,
+                    address: address,
+                    phone: phone,
+                    email: email,
+                    password: password,
+                }),
+            ],
+            { type: "application/json" }
+        )
+    );
+    formData.append("image", profilePicture);
+    const requestOptions = {
+        method: "POST",
+        body: formData,
+        redirect: "follow",
+    };
+    fetch("http://localhost:8080/student/addstudent", requestOptions)
+        .then((response) => response.text())
+        .then((result) => {
+            console.log(result);
+        })
+        .catch((error) => console.error("Error:", error));
+}
