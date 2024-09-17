@@ -8,11 +8,12 @@ function showSection(sectionId) {
 }
 
 //modal with student details
-function showStudentDetails(name, address, phone, email) {
+function showStudentDetails(name, address, phone, email, image) {
     document.getElementById("modalName").innerText = name;
     document.getElementById("modalAddress").innerText = address;
     document.getElementById("modalPhone").innerText = phone;
     document.getElementById("modalEmail").innerText = email;
+    document.getElementById("img").src = `data:image/*;base64,${image}`;
     document.getElementById("studentModal").style.display = "block";
 }
 
@@ -48,6 +49,7 @@ document
                 profilePicture,
             });
             addStudent();
+            loadtable();
             // Clear
             document.getElementById("registrationForm").reset();
         } else {
@@ -92,3 +94,29 @@ function addStudent() {
         })
         .catch((error) => console.error("Error:", error));
 }
+
+//////////////
+async function loadtable() {
+    let stdTable = document.getElementById("studentTableBody");
+
+    let body = ``;
+
+    const studentList = await fetch("http://localhost:8080/student/all").then(
+        (res) => res.json()
+    );
+
+    studentList.forEach((element) => {
+        body += `
+      <tr   
+        onclick="showStudentDetails('${element.name}', '${element.address}', '${element.phone}', '${element.email}','${element.image}')"
+      >
+        <td>${element.name}</td>
+        <td>${element.address}</td>
+        <td>${element.phone}</td> 
+        <td>${element.email}</td>
+      </tr>`;
+    });
+
+    stdTable.innerHTML = body;
+}
+loadtable();
