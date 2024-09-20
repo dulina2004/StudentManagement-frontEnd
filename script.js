@@ -5,6 +5,7 @@ function showSection(sectionId) {
 
     // Show section
     document.getElementById(sectionId).style.display = "block";
+    loadtable();
 }
 
 //modal with student details
@@ -38,8 +39,6 @@ document
 
         // validation
         if (name && address && phone && email && password && profilePicture) {
-            document.getElementById("successMessage").style.display = "block";
-
             console.log({
                 name,
                 address,
@@ -49,9 +48,6 @@ document
                 profilePicture,
             });
             addStudent();
-            loadtable();
-            // Clear
-            document.getElementById("registrationForm").reset();
         } else {
             alert("Please fill out all fields");
         }
@@ -64,7 +60,11 @@ function addStudent() {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const profilePicture = document.getElementById("profilePicture").files[0];
-
+    if (profilePicture.size >= 1000000) {
+        window.alert("File too Large");
+        document.getElementById("profilePicture").value = null;
+        return;
+    }
     const formData = new FormData();
     formData.append(
         "student",
@@ -93,6 +93,10 @@ function addStudent() {
             console.log(result);
         })
         .catch((error) => console.error("Error:", error));
+
+    document.getElementById("successMessage").style.display = "block";
+    document.getElementById("registrationForm").reset();
+    loadtable();
 }
 
 //////////////
@@ -120,3 +124,5 @@ async function loadtable() {
     stdTable.innerHTML = body;
 }
 loadtable();
+
+///////////
