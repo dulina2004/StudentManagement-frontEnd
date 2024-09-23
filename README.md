@@ -23,6 +23,7 @@ Follow these instructions to run the project locally:
 
 ```bash
 git clone https://github.com/your-username/student-management-system-frontend.git
+```
 
 🛠️ Tech Stack
 HTML5: Structure and layout.
@@ -46,14 +47,24 @@ Sign up at EmailJS.
 Create a service and email template.
 Replace the placeholders in the JavaScript snippet with your own Service ID and Template ID.
 
+```bash
+emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formElement)
+  .then(response => {
+    console.log('SUCCESS!', response.status, response.text);
+  }, error => {
+    console.error('FAILED...', error);
+  });
+
+```
 
 📂 Project Structure
 
 📦 student-management-system-frontend
- ┣ 📂 css
- ┃ ┗ 📜 styles.css           # Main CSS file
- ┣ 📂 js
- ┃ ┗ 📜 main.js              # Fetch operations and EmailJS logic
- ┣ 📜 index.html             # Main HTML page
- ┗ 📜 README.md              # Project overview
+┣ 📜 styles.css # Main CSS file
+┣ 📜 main.js # Fetch operations and EmailJS logic
+┣ 📜 index.html # Main HTML page
+┗ 📜 README.md # Project overview
+
+```
+
 ```
