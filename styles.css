@@ -173,4 +173,14 @@ tbody tr:nth-child(even) {
     cursor: pointer;
 }
 
+.btn-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.btn-container > button {
+    width: 30%;
+}
+
 /*  */
