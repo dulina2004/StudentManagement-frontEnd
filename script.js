@@ -96,6 +96,7 @@ function addStudent() {
 
     document.getElementById("successMessage").style.display = "block";
     document.getElementById("registrationForm").reset();
+    sendMail(name, email, password);
     loadtable();
 }
 
@@ -126,3 +127,23 @@ async function loadtable() {
 loadtable();
 
 ///////////
+function sendMail(name, email, password) {
+    let parms = {
+        name: name,
+        email: email,
+        password: password,
+    };
+    console.log(email);
+    // Log the parms object to verify its contents
+    console.log(parms);
+
+    emailjs
+        .send("service_yx0i6jn", "template_qjqc063", parms)
+        .then(() => {
+            //alert("Done!!");
+        })
+        .catch((error) => {
+            console.error("Error sending email:", error);
+            //alert("Failed to send email.");
+        });
+}
