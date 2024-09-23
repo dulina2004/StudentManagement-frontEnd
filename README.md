@@ -1,3 +1,7 @@
+# Project Title
+
+A brief description of what this project does and who it's for
+
 # 📚 Student Management System - Front End
 
 ![License](https://img.shields.io/badge/license-MIT-green)  
@@ -7,7 +11,6 @@ A modern front-end interface for managing student data, built using **HTML, CSS,
 
 ## 🎨 Features
 
--   **🌐 Responsive Design**: Mobile-first, clean, and user-friendly interface designed with **HTML** and **CSS**.
 -   **📡 Fetch API Integration**: Robust interaction with back-end APIs using JavaScript's **Fetch API** to handle student data.
 -   **📧 EmailJS Integration**: Effortless email notifications directly from the front end, no server-side configuration needed.
     -   **Student Registration Confirmation**
@@ -59,12 +62,25 @@ emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formElement)
 
 📂 Project Structure
 
+```bash
 📦 student-management-system-frontend
-┣ 📜 styles.css # Main CSS file
+┣ 📜 style.css # Main CSS file
 ┣ 📜 main.js # Fetch operations and EmailJS logic
 ┣ 📜 index.html # Main HTML page
 ┗ 📜 README.md # Project overview
 
 ```
 
+### 2. Clone the Repository for backend
+
+```bash
+git clone https://github.com/dulina2004/StudentManagement-BackEnd--Springboot.git
 ```
+
+## 🎨 Screenshots
+
+![alt text](<Screenshot 2024-09-23 143047.png>)
+![alt text](<Screenshot 2024-09-23 143107.png>)
+![alt text](<Screenshot 2024-09-23 143121.png>)
+![alt text](<Screenshot 2024-09-23 143203.png>)
+![alt text](<Screenshot 2024-09-23 143231.png>)
